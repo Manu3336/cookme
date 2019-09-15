@@ -1,11 +1,11 @@
-const Recipe = require('../models/recipe-model');
-const Inventory = require('../models/ingredients-model');
 const chalk = require('chalk');
 const mongoose = require('mongoose');
+const Recipe = require('@modelspath/recipe-model');
+const Inventory = require('@modelspath/ingredients-model');
 
 exports.get_recipe_ingredients_byname = (req, res) => {
     const query = {
-        recipeName: req.body.recipeName
+        recipeName: req.body.recipeName.toLowerCase()
     };
     try {
         Recipe.findOne(query, (err, result) => {
@@ -39,7 +39,7 @@ exports.get_recipe_ingredients_byname = (req, res) => {
 
 exports.get_ingredients_byname = (req, res, err) => {
 
-    const nameValue = req.body.name
+    const nameValue = req.body.name.toLowerCase()
     try {
         Inventory.find()
             .exec()
@@ -51,10 +51,13 @@ exports.get_ingredients_byname = (req, res, err) => {
                 if (responseVal.length < 1) {
                     return res.status(200).json({
                         statusCode: "204",
-                        message: "ingredient not available", 
+                        message: "ingredient not available",
                     });
                 } else {
-                    res.status(200).json({statusCode: "200",responseVal});
+                    res.status(200).json({
+                        statusCode: "200",
+                        responseVal
+                    });
                 }
             }).catch(err => {
                 console.log(chalk.bold.red(err));
@@ -82,30 +85,14 @@ exports.get_recipe_ingredients = (req, res) => {
                     available: 'yes'
                 });
             })
-            res.status(200).json({statusCode: "200",ingredients: responseVal});
+            res.status(200).json({
+                statusCode: "200",
+                ingredients: responseVal
+            });
         }).catch(err => {
             console.log(chalk.bold.red(err));
             res.status(500).json({
                 error: err
             })
         });
-}
-
-
-exports.post_inventory =  (req, res) => {
-
-    const ingredients = new Inventory({
-    _id: new mongoose.Types.ObjectId(),
-    ingredients: req.body.ingredients,
-    })
-
-    ingredients.save().then(result => {
-        res.status(200).json({
-            message: 'ingredients added!!!',
-            inventory: result.ingredients
-        });
-    }).catch(err => {
-        console.log(chalk.bold.red(err));
-        res.status(500).json({ error: err });
-    });
 }

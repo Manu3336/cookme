@@ -1,3 +1,4 @@
+require('module-alias/register');
 const chalk = require('chalk');
 const app = require('./app');
 

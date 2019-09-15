@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "aa8e5b78-6cfe-4fea-91e2-88e68c9f2d3b",
+		"name": "Cookme",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET all ingredients in inventory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/ingredients",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"ingredients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/recipe",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST recipe",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"recipeName\": \"Chicken\",\n  \"recipeDetails\": \"Noodles is bakend with vinegar and red chilli\",\n  \"recipeIngredients\": [\n    {\n      \"name\": \"vegetables\"\n    },\n    {\n      \"name\": \"onion\"\n    },\n    {\n    \t\"name\": \"tomatoes\"\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{SERVER}}/recipe",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find particular recipe ingredients",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"recipeName\": \"Noodles\"\n}"
+				},
+				"url": {
+					"raw": "{{LOCALHOST}}/ingredients",
+					"host": [
+						"{{LOCALHOST}}"
+					],
+					"path": [
+						"ingredients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find particular ingredient in inventory",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"tatt\"\n}"
+				},
+				"url": {
+					"raw": "{{SERVER}}/ingredientname",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"ingredientname"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check missing ingredients in inventory",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"recipeName\": \"Chicken\"\n}"
+				},
+				"url": {
+					"raw": "{{SERVER}}/checkInventory",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"checkInventory"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "da2cf6f0-8a46-4e8c-993a-3806696e80a0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "137064df-8e21-4396-b909-dda0ef512a37",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1183f340-3bf7-4c70-bad1-02ac783d4da1",
+			"key": "LOCALHOST",
+			"value": "localhost:9090",
+			"type": "string"
+		},
+		{
+			"id": "49ef7d1a-f36b-4e09-9363-9b1fce43dfd8",
+			"key": "SERVER",
+			"value": "https://cookrecipe.herokuapp.com",
+			"type": "string"
+		}
+	]
+}

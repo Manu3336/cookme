@@ -1,0 +1,21 @@
+[
+    {
+        "post_recipe": "will add the recipe if not available"
+    },
+    {
+        "get_all_recipe": "will get all the recipes present"  
+    },
+    {
+        "find_recipe_ingredients": "Find particular recipe and its ingredients"
+    },
+    {
+        "get_all_inventory": "GET all ingredients in the inventory"  
+    },
+    {
+        "find_inventory": "Find particular ingredient in inventory"
+    },
+    {
+        "find_missing_ingredients": 
+        "will take recipe name as a input and compare its ingredients with the ingredients available in the inventroy, and show the list of missing ingredients in the inventory"  
+    }
+]
