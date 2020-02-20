@@ -39,20 +39,11 @@ exports.post_recipe = (req, res) => {
         }
     });
 }
-
 exports.get_recipe = (req, res) => {
-    Recipe.find()
-        .exec()
-        .then(result => {
-            const count = result.length
-            res.status(200).json({
-                count: count,
-                recipe: result
-            });
-        }).catch(err => {
-            console.log(chalk.bold.red(err));
-            res.status(500).json({
-                error: err
-            })
-        });
+
+    res.status(200).json("test");
+        
+            
+       
 }
+
